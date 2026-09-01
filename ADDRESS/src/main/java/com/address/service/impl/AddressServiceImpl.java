@@ -2,6 +2,9 @@ package com.address.service.impl;
 
 import java.util.List;
 
+import com.address.client.EmployeeClient;
+import com.address.model.dto.EmployeeDto;
+import feign.FeignException;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
@@ -22,10 +25,13 @@ public class AddressServiceImpl implements AddressService {
 
     private final AddressRepository addressRepository;
     private final ModelMapper modelMapper;
+    private final EmployeeClient employeeClient;
 
     @Override
     public List<AddressDto> saveAddress(AddressRequest addressRequest) {
         // TODO chack if employee exists
+        employeeClient.getSingleEmployee(addressRequest.getEmpId());
+
 
         List<Address> addresses = addressRequest.getAddressRequestDtoList()
                 .stream()

@@ -38,7 +38,7 @@ public class EmployeeController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<EmployeeDto> getEmployee(@PathVariable Long id) {
+    public ResponseEntity<EmployeeDto> getSingleEmployee(@PathVariable Long id) {
         EmployeeDto response = employeeService.getEmployee(id);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
