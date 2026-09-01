@@ -3,9 +3,7 @@ package com.employee.model.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.hibernate.proxy.HibernateProxy;
 
-import java.util.Objects;
 
 @Entity
 @Table(name = "employees")
