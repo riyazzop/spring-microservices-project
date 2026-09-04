@@ -1,6 +1,7 @@
 package com.employee.controller;
 
 import com.employee.exceptions.MissingParametersException;
+import com.employee.model.dto.AddressDto;
 import com.employee.model.dto.EmployeeDto;
 import com.employee.service.EmployeeService;
 import lombok.AllArgsConstructor;
@@ -58,12 +59,11 @@ public class EmployeeController {
             missingParams.add("companyName");
         }
         if(!missingParams.isEmpty()){
-            String finalMessage = missingParams.stream().collect(Collectors.joining(","));
+            String finalMessage = String.join(",", missingParams);
             throw new MissingParametersException("Please provide : " + finalMessage);
         }
         EmployeeDto employeeDto = employeeService.getEmployeeByEmpCodeAndCompanyName(empCode,companyName);
         return ResponseEntity.ok(employeeDto);
     }
-
 
 }
